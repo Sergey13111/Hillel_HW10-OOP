@@ -13,6 +13,11 @@ class  Person {
     }
 }
 
+const isWeekend = (newBirthDayDate) => {
+    const day = newBirthDayDate.getDay();
+    return (day === 0 || day === 6);
+}
+
 class Employee extends Person {
     #salary = 0;
     constructor(firstName, lastName, age, birthDayDate, salary, jobPosition){
@@ -25,10 +30,9 @@ class Employee extends Person {
         const celebrationMessage = super.celebrate();
         const newBirthDayDate = new Date(this.birthDayDate);
         const newDate = new Date();
-
+    
         newBirthDayDate.setFullYear(newDate.getFullYear());
-        const day = newBirthDayDate.getDay();
-        if (day === 0 || day === 6) {
+        if (isWeekend(newBirthDayDate) === true) {
         return `${celebrationMessage}`
         } else
         return `"Happy Birthday, but I need to work"`
