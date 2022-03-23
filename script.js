@@ -21,17 +21,21 @@ class Employee extends Person {
         this.jobPosition = jobPosition;
     }
 
-    getYearSalary() {
-        return this.#salary * 12;
-    }
-
     celebrate() {
         const celebrationMessage = super.celebrate();
-        const day = new Date(this.birthDayDate).getDay();
+        const newBirthDayDate = new Date(this.birthDayDate);
+        const newDate = new Date();
+
+        newBirthDayDate.setFullYear(newDate.getFullYear());
+        const day = newBirthDayDate.getDay();
         if (day === 0 || day === 6) {
-            return `${celebrationMessage}`
+        return `${celebrationMessage}`
         } else
         return `"Happy Birthday, but I need to work"`
+    }
+
+    getYearSalary() {
+        return this.#salary * 12;
     }
 }
 
